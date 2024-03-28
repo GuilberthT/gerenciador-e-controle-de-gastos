@@ -1,12 +1,22 @@
-const express = require("express");
-const bodyParser = require("body-parser")
+import express, { json } from "express"
+import { connect } from "mongoose";
+import { config } from "dotenv"
 
 const app = express()
 const PORT = 3000
+config()
 
-app.use(bodyParser.json())
+app.use(json())
 
 let gastos = []
+
+
+main().catch(err => console.log(err));
+
+async function main() {
+    await connect(process.env.ACCESS_DB);
+
+}
 
 app.post("/gastos", (req, res) => {
     const { descricao, valor } = req.body;
@@ -60,7 +70,9 @@ app.get("/gastos/:id", (req, res) => {
     return res.json(gasto);
 });
 app.get("/gastos", (req, res) => {
-    return res.json(gastos);
+    return res.json({
+        message: "FOi"
+    });
 })
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`)
