@@ -4,7 +4,7 @@ export async function updateExpenses(req, res) {
     const { id } = req.params;
     const { descricao, valor } = req.body;
     if (!descricao || !valor) {
-        return res.status(400).json({ message: "Descição e valor são obrigatórios" })
+        return res.status(400).json({ message: "Descrição e valor são obrigatórios" })
     }
     const updatedExpenseData = {
         description: descricao,
