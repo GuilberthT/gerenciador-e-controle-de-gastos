@@ -1,15 +1,15 @@
 import { newExpense } from "../../service/expenseService.js";
 
 export async function createExpense(req, res) {
-    const { descricao, valor } = req.body;
+    const { description, value } = req.body;
 
-    if (!descricao || !valor) {
+    if (!description || !value) {
         return res.status(400).json({ message: "Descrição e valor são obrigatórios." })
     }
 
     const expense = {
-        description: descricao,
-        value: valor,
+        description,
+        value,
         createAt: new Date()
     }
 

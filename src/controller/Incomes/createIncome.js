@@ -8,8 +8,8 @@ export async function createIncome(req, res) {
     }
 
     const income = {
-        description: description,
-        value: value,
+        description,
+        value,
         createdAt: new Date()
     }
 

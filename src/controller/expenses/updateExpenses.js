@@ -2,13 +2,15 @@ import { updateExpenseById } from "../../service/expenseService.js";
 
 export async function updateExpenses(req, res) {
     const { id } = req.params;
-    const { descricao, valor } = req.body;
-    if (!descricao || !valor) {
+    const { description, value } = req.body;
+
+    if (!description || !value) {
         return res.status(400).json({ message: "Descrição e valor são obrigatórios" })
     }
+
     const updatedExpenseData = {
-        description: descricao,
-        value: valor,
+        description,
+        value,
         createAt: new Date()
     };
 
