@@ -1,9 +1,10 @@
 import { Schema, model } from 'mongoose'
 
 const schemaExpenseType = new Schema({
-    title: String,
-    createdAt: Date,
-    updatedAt: Date
-})
+    description: String,
+    value: Number,
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now }
+});
 
-export const expenseTypeModel = model("ExpenseType", schemaExpenseType)
+export const expenseType = model("ExpenseType", schemaExpenseType)
