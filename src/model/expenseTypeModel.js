@@ -7,4 +7,4 @@ const schemaExpenseType = new Schema({
     updatedAt: { type: Date, default: Date.now }
 });
 
-export const expenseType = model("ExpenseType", schemaExpenseType)
+export const expenseTypeModel = model("ExpenseType", schemaExpenseType);
