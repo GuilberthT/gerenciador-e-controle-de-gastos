@@ -1,5 +1,10 @@
 import { Router } from "express";
-import { createExpenseType, findExpenseTypes, updateExpenseType, deleteExpenseType } from '../../controller/expenses/expenseTypeController.js';
+import {
+    createExpenseType,
+    findExpenseTypes,
+    updateExpenseType,
+    deleteExpenseType
+} from '../../controller/type-expenses/expenseTypeController.js';
 const expenseTypeRouter = Router();
 
 expenseTypeRouter.post('/', createExpenseType);

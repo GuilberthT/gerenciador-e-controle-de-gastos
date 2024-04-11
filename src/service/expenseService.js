@@ -12,7 +12,7 @@ export async function newExpense(data) {
 
 export async function getExpenses() {
     try {
-        const expenses = await expenseModel.find()
+        const expenses = await expenseModel.find().populate("expenseType")
 
         return expenses
     } catch (error) {

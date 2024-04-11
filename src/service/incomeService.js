@@ -12,7 +12,7 @@ export async function newIncome(data) {
 
 export async function getIncome() {
     try {
-        const income = await incomeModel.find()
+        const income = await incomeModel.find().populate("incomeType")
 
         return income
     } catch (error) {
