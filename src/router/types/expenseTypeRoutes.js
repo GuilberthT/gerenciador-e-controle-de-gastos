@@ -1,15 +1,14 @@
 import { Router } from "express";
-import {
-    createExpenseType,
-    findExpenseTypes,
-    updateExpenseType,
-    deleteExpenseType
-} from '../../controller/type-expenses/expenseTypeController.js';
-const expenseTypeRouter = Router();
+import { create_expense_type_controller } from '../../controller/type-expenses/createExpenseType.js';
+import { delete_expense_type_controller } from '../../controller/type-expenses/deleteExpenseType.js';
+import { update_expense_type_controller } from '../../controller/type-expenses/updateExpenseType.js';
+import { find_expense_types_controller } from '../../controller/type-expenses/findExpenseType.js';
 
-expenseTypeRouter.post('/', createExpenseType);
-expenseTypeRouter.get('/', findExpenseTypes);
-expenseTypeRouter.put('/:id', updateExpenseType);
-expenseTypeRouter.delete('/:id', deleteExpenseType);
+const expense_Type_Router = Router();
 
-export default expenseTypeRouter;
+expense_Type_Router.post('/', create_expense_type_controller);
+expense_Type_Router.get('/', find_expense_types_controller);
+expense_Type_Router.put('/:id', update_expense_type_controller);
+expense_Type_Router.delete('/:id', delete_expense_type_controller);
+
+export default expense_Type_Router;

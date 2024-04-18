@@ -7,6 +7,7 @@ const schemaExpense = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'ExpenseType'
     },
+    paymentDate: String,
     createAt: Date,
     updateAt: Date
 })

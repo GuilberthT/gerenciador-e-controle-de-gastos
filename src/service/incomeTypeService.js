@@ -1,6 +1,16 @@
-import { incomeTypeModel } from "../../model/incomeTypeModel.js";
+import { incomeTypeModel } from "../model/incomeTypeModel.js"
 
-export async function createIncomeType(req, res) {
+export async function getIncomeById(id) {
+    try {
+        const incomeType = await incomeTypeModel.findById(id)
+
+        return incomeType
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
+export async function newCreateIncomeType(req, res) {
     const { title, description } = req.body;
 
     try {
@@ -48,5 +58,3 @@ export async function deleteIncomeType(req, res) {
         res.status(400).json({ message: error.message });
     }
 }
-
-// Implementar as funções para atualizar e excluir tipos de rendas?

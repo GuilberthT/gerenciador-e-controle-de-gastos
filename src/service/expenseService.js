@@ -2,7 +2,8 @@ import { expenseModel } from "../model/expenseModel.js";
 
 export async function newExpense(data) {
     try {
-        const expense = await expenseModel.create(data)
+        const { description, value, expenseType, paymentDate } = data
+        const expense = await expenseModel.create({ description, value, expenseType, createAt: new Date(), paymentDate })
 
         return expense
     } catch (error) {
@@ -38,6 +39,7 @@ export async function deleteExpenseById(id) {
         if (!deletedExpense) {
             throw new Error("Despesa não encontrada.")
         }
+        return deletedExpense;
     } catch (error) {
         throw new Error(error);
     }
@@ -52,5 +54,20 @@ export async function getExpenseById(id) {
         return expense;
     } catch (error) {
         throw new Error(error)
+    }
+}
+
+export async function getExpensesByMonth(month, year) {
+    try {
+        const expenses = await expenseModel.find({
+            createAt: {
+                $gte: new Date(year, month - 1, 1), 
+                $lt: new Date(year, month, 1) 
+            }
+        });
+
+        return expenses;
+    } catch (error) {
+        throw new Error(error);
     }
 }

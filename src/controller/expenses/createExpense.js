@@ -1,4 +1,4 @@
-import { getExpensesById } from "../../service/expensaTypeService.js";
+import { getExpensesById } from "../../service/expenseTypeService.js";
 import { newExpense } from "../../service/expenseService.js";
 
 export async function createExpense(req, res) {

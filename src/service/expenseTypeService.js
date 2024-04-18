@@ -1,9 +1,9 @@
-import { expenseTypeModel } from "../../model/expenseTypeModel.js";
-import { updateExpenseById } from "../../service/expenseService.js";
+import { expenseTypeModel } from "../model/expenseTypeModel.js"
+
 
 export async function createExpenseType(req, res) {
     const { title, description } = req.body;
-
+    
     try {
         const newExpenseType = await expenseTypeModel.create({ title, description });
         res.status(201).json(newExpenseType);
@@ -24,7 +24,7 @@ export async function findExpenseTypes(req, res) {
 export async function updateExpenseType(req, res) {
     const { id } = req.params;
     const { title, description } = req.body;
-
+    
     try {
         const updatedExpenseType = await expenseTypeModel.findByIdAndUpdate(id, { title, description }, { new: true });
         if (!updatedExpenseType) {
@@ -38,7 +38,7 @@ export async function updateExpenseType(req, res) {
 
 export async function deleteExpenseType(req, res) {
     const { id } = req.params;
-
+    
     try {
         const deletedExpenseType = await expenseTypeModel.findByIdAndDelete(id);
         if (!deletedExpenseType) {
@@ -50,4 +50,12 @@ export async function deleteExpenseType(req, res) {
     }
 }
 
-// Implementar as funções para atualizar e excluir tipos de gastos?
+export async function getExpensesById(id) {
+    try {
+        const expensesType = await expenseTypeModel.findById(id)
+
+        return expensesType
+    } catch (error) {
+        throw new Error(error)
+    }
+}

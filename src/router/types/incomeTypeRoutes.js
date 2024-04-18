@@ -1,16 +1,14 @@
 import { Router } from "express";
-import {
-    createIncomeType,
-    findIncomeTypes,
-    updateIncomeType,
-    deleteIncomeType
-} from '../../controller/type-incomes/incomeTypeController.js';
+import { create_income_type_controller } from '../../controller/type-incomes/createIncomeType.js';
+import { delete_income_type_controller } from '../../controller/type-incomes/deleteIncomeType.js';
+import { find_income_types_controller } from '../../controller/type-incomes/findIncomeTypes.js';
+import { update_income_type_controller } from '../../controller/type-incomes/updateIncomeType.js';
 
-const incomeTypeRouter = Router();
+const income_type_router = Router();
 
-incomeTypeRouter.post('/', createIncomeType);
-incomeTypeRouter.get('/', findIncomeTypes);
-incomeTypeRouter.put('/:id', updateIncomeType);
-incomeTypeRouter.delete('/:id', deleteIncomeType);
+income_type_router.post('/', create_income_type_controller);
+income_type_router.get('/', find_income_types_controller);
+income_type_router.put('/:id', update_income_type_controller);
+income_type_router.delete('/:id', delete_income_type_controller);
 
-export default incomeTypeRouter;
+export default income_type_router;
