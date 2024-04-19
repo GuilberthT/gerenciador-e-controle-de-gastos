@@ -2,10 +2,10 @@ import { expenseTypeModel } from "../model/expenseTypeModel.js"
 
 
 export async function createExpenseType(req, res) {
-    const { title, description } = req.body;
+    const { description } = req.body;
     
     try {
-        const newExpenseType = await expenseTypeModel.create({ title, description });
+        const newExpenseType = await expenseTypeModel.create({ description });
         res.status(201).json(newExpenseType);
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -23,10 +23,10 @@ export async function findExpenseTypes(req, res) {
 
 export async function updateExpenseType(req, res) {
     const { id } = req.params;
-    const { title, description } = req.body;
+    const { description } = req.body;
     
     try {
-        const updatedExpenseType = await expenseTypeModel.findByIdAndUpdate(id, { title, description }, { new: true });
+        const updatedExpenseType = await expenseTypeModel.findByIdAndUpdate(id, { description }, { new: true });
         if (!updatedExpenseType) {
             return res.status(404).json({ message: "Tipo de gasto não encontrado" });
         }

@@ -11,10 +11,10 @@ export async function getIncomeById(id) {
 }
 
 export async function newCreateIncomeType(req, res) {
-    const { title, description } = req.body;
+    const { description } = req.body;
 
     try {
-        const newIncomeType = await incomeTypeModel.create({ title, description });
+        const newIncomeType = await incomeTypeModel.create({ description });
         res.status(201).json(newIncomeType);
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -32,10 +32,10 @@ export async function findIncomeTypes(req, res) {
 
 export async function updateIncomeType(req, res) {
     const { id } = req.params;
-    const { title, description } = req.body;
+    const { description } = req.body;
 
     try {
-        const updatedIncomeType = await incomeTypeModel.findByIdAndUpdate(id, { title, description }, { new: true });
+        const updatedIncomeType = await incomeTypeModel.findByIdAndUpdate(id, { description }, { new: true });
         if (!updatedIncomeType) {
             return res.status(404).json({ message: "Tipo de renda não encontrada" });
         }
