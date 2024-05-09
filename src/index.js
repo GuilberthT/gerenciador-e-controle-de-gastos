@@ -4,6 +4,7 @@ import { connect } from "mongoose";
 import { config } from "dotenv"
 import { setRouter } from "./router/index.js";
 import userRouter from "./router/user.js"
+import cors from 'cors'
 
 
 const app = express()
@@ -12,6 +13,7 @@ const PORT = 3000
 config()
 
 app.use(json())
+app.use(cors())
 app.use('/user', userRouter)
 
 setRouter(app)
