@@ -1,14 +1,13 @@
-import express from 'express';
+import { Router } from 'express'
 import { registerUser } from '../controller/user/registerUser.js';
 import { loginUser } from '../controller/user/loginUser.js';
 import { getUser } from '../controller/user/getUser.js';
-import validateId from '../middleware/validateId.js';
 
-const router = express.Router();
+const userRouter = Router();
 
-router.post("/register", registerUser);
-router.post("/login", loginUser);
-router.get("/:id", validateId, getUser);
+userRouter.post("/register", registerUser);
+userRouter.post("/login", loginUser);
+userRouter.get("/:id", getUser);
 
-export default router;
+export default userRouter;
 
