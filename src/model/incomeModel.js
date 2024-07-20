@@ -7,7 +7,7 @@ const incomeSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'IncomeType'
     },
-    receiptDate: String,
+    date: String,
     createdAt: Date,
     updateAt: Date
 })
