@@ -1,15 +1,18 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 
 const incomeSchema = new Schema({
-    description: String,
-    value: Number,
-    incomeType: {
-        type: Schema.Types.ObjectId,
-        ref: 'IncomeType'
-    },
-    date: String,
-    createdAt: Date,
-    updateAt: Date
-})
+  description: {
+    type: String,
+    required: true,
+  },
+  amount: {
+    type: Number,
+    required: true,
+  },
+  paymentDate: {
+    type: Date,
+    required: true,
+  },
+});
 
-export const incomeModel = model("Income", incomeSchema)
+export default model('Income', incomeSchema);
