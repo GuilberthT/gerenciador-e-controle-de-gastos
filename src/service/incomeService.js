@@ -2,14 +2,7 @@ import Income from "../model/incomeModel.js";
 
 export async function newIncome(data) {
   try {
-    const { description, value, incomeType, receiptDate } = data;
-    const income = await Income.create({
-      description,
-      value,
-      incomeType,
-      createdAt: new Date(),
-      receiptDate,
-    });
+    const income = await Income.create(data);
 
     return income;
   } catch (error) {
@@ -71,7 +64,7 @@ export async function getIncomesByMonth(month, year) {
   try {
     const incomes = await Income.find({
       createdAt: {
-        $gte: new Date(year, month - 1, 1),
+        $gte: new Date(year, month - 1, 1), 
         $lt: new Date(year, month, 1),
       },
     });
@@ -89,7 +82,7 @@ export async function getTotalIncomes(month) {
   const totalIncomes = await Income.aggregate([
     {
       $match: {
-        paymentDate: {
+        createdAt: {
           $gte: startDate,
           $lt: endDate,
         },
@@ -98,7 +91,7 @@ export async function getTotalIncomes(month) {
     {
       $group: {
         _id: null,
-        total: { $sum: "$amount" },
+        total: { $sum: "$value" },
       },
     },
   ]);
