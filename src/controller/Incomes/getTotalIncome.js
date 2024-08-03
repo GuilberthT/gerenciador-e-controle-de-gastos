@@ -1,12 +1,12 @@
-import incomeService from '../../service/incomeService.js';
+import { getTotalIncomes } from '../../service/incomeService.js';
 
 export async function getTotalIncome(req, res) {
+  const { month } = req.params;
+
   try {
-    const { month } = req.params;
-    const total = await incomeService.getTotalIncomes(month);
-    res.json(total);
+    const total = await getTotalIncomes(parseInt(month));
+    res.status(200).json({ total });
   } catch (error) {
-    console.error(error);
-    res.status(500).send('Server error');
+    res.status(400).json({ message: error.message });
   }
 }

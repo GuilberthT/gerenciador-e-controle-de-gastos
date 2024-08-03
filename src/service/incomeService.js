@@ -1,10 +1,9 @@
-import { incomeModel } from "../model/incomeModel.js";
-import Income from '../model/incomeModel.js';
+import Income from "../model/incomeModel.js";
 
 export async function newIncome(data) {
   try {
     const { description, value, incomeType, receiptDate } = data;
-    const income = await incomeModel.create({
+    const income = await Income.create({
       description,
       value,
       incomeType,
@@ -20,7 +19,7 @@ export async function newIncome(data) {
 
 export async function getIncome() {
   try {
-    const income = await incomeModel.find().populate("incomeType");
+    const income = await Income.find().populate("incomeType");
 
     return income;
   } catch (error) {
@@ -30,7 +29,7 @@ export async function getIncome() {
 
 export async function updateIncomeById(id, newData) {
   try {
-    const updatedIncome = await incomeModel.findByIdAndUpdate(id, newData, {
+    const updatedIncome = await Income.findByIdAndUpdate(id, newData, {
       new: true,
     });
     if (!updatedIncome) {
@@ -44,7 +43,7 @@ export async function updateIncomeById(id, newData) {
 
 export async function deleteIncomeById(id) {
   try {
-    const deletedIncome = await incomeModel.findByIdAndDelete(id);
+    const deletedIncome = await Income.findByIdAndDelete(id);
     if (!deletedIncome) {
       throw new Error("Renda não encontrada");
     }
@@ -57,7 +56,7 @@ export async function deleteIncomeById(id) {
 
 export async function getById(id) {
   try {
-    const income = await incomeModel.findById(id);
+    const income = await Income.findById(id);
     if (!income) {
       throw new Error("Renda não encontrada");
     }
@@ -70,7 +69,7 @@ export async function getById(id) {
 
 export async function getIncomesByMonth(month, year) {
   try {
-    const incomes = await incomeModel.find({
+    const incomes = await Income.find({
       createdAt: {
         $gte: new Date(year, month - 1, 1),
         $lt: new Date(year, month, 1),
