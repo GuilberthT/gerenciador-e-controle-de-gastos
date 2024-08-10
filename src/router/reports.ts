@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { reportTotalIncomes } from '../controller/reports/totalIncomeReport.js';
-import { reportTotalExpenses } from '../controller/reports/totalExpenseReport.js';
+import { reportTotalIncomes } from '../controller/reports/totalIncomeReport';
+import { reportTotalExpenses } from '../controller/reports/totalExpenseReport';
 
 const reportsRouter = Router();
 

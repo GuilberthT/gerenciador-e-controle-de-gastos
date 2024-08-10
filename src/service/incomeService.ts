@@ -1,11 +1,12 @@
-import Income from "../model/incomeModel.js";
+import Income from "../model/incomeModel";
+import { IIncome } from "../model/types/incomeTypes";
 
-export async function newIncome(data) {
+export async function newIncome(data: IIncome) {
   try {
     const income = await Income.create(data);
 
     return income;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(error);
   }
 }
@@ -15,26 +16,27 @@ export async function getIncome() {
     const income = await Income.find().populate("incomeType");
 
     return income;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(error);
   }
 }
 
-export async function updateIncomeById(id, newData) {
+export async function updateIncomeById(id: string, newData: IIncome) {
   try {
     const updatedIncome = await Income.findByIdAndUpdate(id, newData, {
       new: true,
     });
+
     if (!updatedIncome) {
       throw new Error("Renda não encontrada");
     }
     return updatedIncome;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(error);
   }
 }
 
-export async function deleteIncomeById(id) {
+export async function deleteIncomeById(id: string) {
   try {
     const deletedIncome = await Income.findByIdAndDelete(id);
     if (!deletedIncome) {
@@ -42,12 +44,12 @@ export async function deleteIncomeById(id) {
     }
 
     return deletedIncome;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(error);
   }
 }
 
-export async function getById(id) {
+export async function getById(id: string) {
   try {
     const income = await Income.findById(id);
     if (!income) {
@@ -55,12 +57,12 @@ export async function getById(id) {
     }
 
     return income;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(error);
   }
 }
 
-export async function getIncomesByMonth(month, year) {
+export async function getIncomesByMonth(month: number, year: number) {
   try {
     const incomes = await Income.find({
       createdAt: {
@@ -70,12 +72,12 @@ export async function getIncomesByMonth(month, year) {
     });
 
     return incomes;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(error);
   }
 }
 
-export async function getTotalIncomes(month) {
+export async function getTotalIncomes(month: number) {
   const startDate = new Date(new Date().getFullYear(), month - 1, 1);
   const endDate = new Date(new Date().getFullYear(), month, 0);
 

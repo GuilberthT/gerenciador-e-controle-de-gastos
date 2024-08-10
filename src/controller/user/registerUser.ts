@@ -1,7 +1,8 @@
 import bcrypt from 'bcrypt';
-import User from '../../model/User.js';
+import User from '../../model/User';
+import { Request, Response } from 'express';
 
-export const registerUser = async (req, res) => {
+export const registerUser = async (req: Request, res: Response) => {
     try {
         const { name, email, password, confirmpassword } = req.body;
         if (!name || !email || !password || !confirmpassword) {

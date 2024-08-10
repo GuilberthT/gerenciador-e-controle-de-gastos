@@ -1,7 +1,8 @@
+import { Request, Response } from "express";
 import { getExpenses } from "../../service/expenseService.js";
 import { formatMonth } from "../../utils/dateFormat.js";
 
-export async function reportTotalExpenses(req, res) {
+export async function reportTotalExpenses(req: Request, res: Response) {
   const month = req.query.month;
 
   const expenses = await getExpenses();

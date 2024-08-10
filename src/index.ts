@@ -2,7 +2,7 @@ import express from "express"
 import { json } from "express"
 import { connect } from "mongoose";
 import { config } from "dotenv"
-import { setRouter } from "./router/index.js";
+import { setRouter } from "./router/index";
 import cors from 'cors'
 
 const app = express()
@@ -17,6 +17,10 @@ setRouter(app)
 
 async function main() {
     try {
+        if(!process.env.ACCESS_DB){
+          return   
+        }
+
         await connect(process.env.ACCESS_DB);
     } catch (error) {
         console.log(error)
@@ -26,7 +30,7 @@ async function main() {
 main()
 
 app.get('/', (req, res) => {
-    res.json('Bem vindo')
+    res.json('Bem vindo ao Typescript')
 })
 
 app.listen(PORT, () => {

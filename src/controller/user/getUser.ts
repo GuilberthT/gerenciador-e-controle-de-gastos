@@ -1,6 +1,7 @@
-import User from "../../model/User.js";
+import { Request, Response } from "express";
+import User from "../../model/User";
 
-export const getUser = async (req, res) => {
+export const getUser = async (req: Request, res: Response) => {
     try {
         const id = req.params.id;
         const user = await User.findById(id, '-password');

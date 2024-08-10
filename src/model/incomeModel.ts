@@ -1,6 +1,7 @@
 import { Schema, model } from "mongoose";
+import { IIncome } from "./types/incomeTypes";
 
-const incomeSchema = new Schema({
+const incomeSchema = new Schema<IIncome>({
   description: {
     type: String,
     required: true,
@@ -21,4 +22,4 @@ const incomeSchema = new Schema({
   updatedAt: Date
 });
 
-export default model("Income", incomeSchema);
+export default model<IIncome>("Income", incomeSchema);
