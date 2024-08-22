@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { updateIncomeById } from "../../service/incomeService";
 
-export async function updateIncome(req: Request<{ id: string }, {}, { description: string, value: number }>, res: Response): Promise<void> {
+export async function updateIncome(req: Request<{ id: string }, {}, { description: string, value: number }>, res: Response) {
     const { id } = req.params;
     const { description, value } = req.body;
 

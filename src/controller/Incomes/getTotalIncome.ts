@@ -5,7 +5,7 @@ export async function getTotalIncome(req: Request<{ month: string }>, res: Respo
     const { month } = req.params;
 
     try {
-        const total = await getTotalIncomes(month);
+        const total = await getTotalIncomes(parseInt(month, 10)); // Conversão para number
         res.status(200).json({ total });
     } catch (error: any) {
         res.status(400).json({ message: error.message });

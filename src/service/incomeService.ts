@@ -1,7 +1,7 @@
 import Income from "../model/incomeModel";
 import { IIncome } from "../model/types/incomeTypes";
 
-export async function newIncome(data: IIncome) {
+export async function newIncome(data: IIncome): Promise<IIncome> {
   try {
     const income = await Income.create(data);
 
@@ -11,7 +11,7 @@ export async function newIncome(data: IIncome) {
   }
 }
 
-export async function getIncome() {
+export async function getIncome(): Promise<IIncome[]> {
   try {
     const income = await Income.find().populate("incomeType");
 
@@ -21,7 +21,7 @@ export async function getIncome() {
   }
 }
 
-export async function updateIncomeById(id: string, newData: IIncome) {
+export async function updateIncomeById(id: string, newData: Partial<IIncome>): Promise<IIncome | null> {
   try {
     const updatedIncome = await Income.findByIdAndUpdate(id, newData, {
       new: true,
@@ -36,7 +36,7 @@ export async function updateIncomeById(id: string, newData: IIncome) {
   }
 }
 
-export async function deleteIncomeById(id: string) {
+export async function deleteIncomeById(id: string): Promise<IIncome | null> {
   try {
     const deletedIncome = await Income.findByIdAndDelete(id);
     if (!deletedIncome) {
@@ -49,7 +49,7 @@ export async function deleteIncomeById(id: string) {
   }
 }
 
-export async function getById(id: string) {
+export async function getById(id: string): Promise<IIncome | null> {
   try {
     const income = await Income.findById(id);
     if (!income) {
@@ -62,11 +62,11 @@ export async function getById(id: string) {
   }
 }
 
-export async function getIncomesByMonth(month: number, year: number) {
+export async function getIncomesByMonth(month: number, year: number): Promise<IIncome[]> {
   try {
     const incomes = await Income.find({
       createdAt: {
-        $gte: new Date(year, month - 1, 1), 
+        $gte: new Date(year, month - 1, 1),
         $lt: new Date(year, month, 1),
       },
     });
@@ -77,7 +77,7 @@ export async function getIncomesByMonth(month: number, year: number) {
   }
 }
 
-export async function getTotalIncomes(month: number) {
+export async function getTotalIncomes(month: number): Promise<number> {
   const startDate = new Date(new Date().getFullYear(), month - 1, 1);
   const endDate = new Date(new Date().getFullYear(), month, 0);
 

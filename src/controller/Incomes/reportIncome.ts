@@ -5,7 +5,7 @@ export async function generateIncomeReport(req: Request<{}, {}, { month: string,
     const { month, year } = req.body;
 
     try {
-        const incomes = await getIncomesByMonth(month, year);
+        const incomes = await getIncomesByMonth(parseInt(month, 10), parseInt(year, 10)); 
         res.status(200).json(incomes);
     } catch (error: any) {
         res.status(400).json({ message: error.message });

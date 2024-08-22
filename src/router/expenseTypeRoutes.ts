@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { create_expense_type_controller } from '../controller/type-expenses/createExpenseType.js';
-import { delete_expense_type_controller } from '../controller/type-expenses/deleteExpenseType.js';
-import { update_expense_type_controller } from '../controller/type-expenses/updateExpenseType.js';
-import { find_expense_types_controller } from '../controller/type-expenses/findExpenseType.js';
+import { create_expense_type_controller } from '../controller/type-expenses/createExpenseType';
+import { delete_expense_type_controller } from '../controller/type-expenses/deleteExpenseType';
+import { update_expense_type_controller } from '../controller/type-expenses/updateExpenseType';
+import { find_expense_types_controller } from '../controller/type-expenses/findExpenseType';
 
 const expense_Type_Router = Router();
 

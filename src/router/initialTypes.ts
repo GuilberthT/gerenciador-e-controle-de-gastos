@@ -11,5 +11,3 @@ function addPessoa(pessoa: IPessoa){
     pessoa.nome
 }
 
-// const nome = "Matheus"
-

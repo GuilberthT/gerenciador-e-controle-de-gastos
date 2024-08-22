@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { updateExpenseById } from "../../service/expenseService";
 
-export async function updateExpenses(req: Request, res: Response): Promise<void> {
+export async function updateExpenses(req: Request, res: Response) {
     const { id } = req.params;
     const { description, value } = req.body;
 
@@ -22,4 +22,3 @@ export async function updateExpenses(req: Request, res: Response): Promise<void>
         res.status(400).json({ message: (error as Error).message });
     }
 }
-

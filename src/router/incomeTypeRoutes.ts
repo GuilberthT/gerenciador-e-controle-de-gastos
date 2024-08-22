@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { create_income_type_controller } from '../controller/type-incomes/createIncomeType.js';
-import { delete_income_type_controller } from '../controller/type-incomes/deleteIncomeType.js';
-import { find_income_types_controller } from '../controller/type-incomes/findIncomeTypes.js';
-import { update_income_type_controller } from '../controller/type-incomes/updateIncomeType.js';
+import { create_income_type_controller } from '../controller/type-incomes/createIncomeType';
+import { delete_income_type_controller } from '../controller/type-incomes/deleteIncomeType';
+import { find_income_types_controller } from '../controller/type-incomes/findIncomeTypes';
+import { update_income_type_controller } from '../controller/type-incomes/updateIncomeType';
 
 const income_type_router = Router();
 

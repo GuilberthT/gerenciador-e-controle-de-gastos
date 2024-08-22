@@ -6,6 +6,7 @@ interface Expense {
   description: string;
   value: number;
   expenseType: string;
+  paymentDate: Date;
   createAt?: Date;
 }
 
@@ -14,7 +15,8 @@ export async function createExpense(req: Request, res: Response): Promise<void> 
     await validates(req.body);
     const expense: Expense = {
       ...req.body,
-      createAt: new Date(),
+      createAt: new Date(), 
+      paymentDate: new Date(req.body.paymentDate)  
     };
     const myExpense = await newExpense(expense);
 
@@ -28,6 +30,7 @@ async function validates(body: Expense): Promise<void> {
   validateRequiredDescription(body.description);
   validateRequiredValue(body.value);
   await validateRequiredExpenseType(body.expenseType);
+  validateRequiredPaymentDate(body.paymentDate);
 }
 
 function validateRequiredDescription(description: string): void {
@@ -51,5 +54,11 @@ async function validateRequiredExpenseType(idExpenseType: string): Promise<void>
 
   if (!expenseType) {
     throw new Error("Tipo de despesa não encontrado!");
+  }
+}
+
+function validateRequiredPaymentDate(paymentDate: Date): void {
+  if (!paymentDate) {
+    throw new Error("A data de pagamento é obrigatória!");
   }
 }

@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import { createExpense } from '../controller/expenses/createExpense.js';
-import { findExpenses } from '../controller/expenses/findExpenses.js';
-import { updateExpenses } from '../controller/expenses/updateExpenses.js';
-import { deleteExpenses } from '../controller/expenses/deleteExpenses.js';
-import { getExpenseById } from '../controller/expenses/getExpenseById.js';
-import { auth } from '../middleware/auth.js';
+import { createExpense } from '../controller/expenses/createExpense';
+import { findExpenses } from '../controller/expenses/findExpenses';
+import { updateExpenses } from '../controller/expenses/updateExpenses';
+import { deleteExpenses } from '../controller/expenses/deleteExpenses';
+import { getExpenseById } from '../controller/expenses/getExpenseById';
+import { auth } from '../middleware/auth';
 
 const expensesRouter = Router();
 
