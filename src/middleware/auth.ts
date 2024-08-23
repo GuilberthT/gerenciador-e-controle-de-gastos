@@ -22,9 +22,9 @@ export const auth = (req: Request, res: Response, next: NextFunction): Response 
 
         const decoded = jwt.verify(token, process.env.SECRET as string) as DecodedToken;
 
-        req.user = decoded;  // Adiciona as informações do token no request
+        req.user = decoded;  
 
-        next();  // Continua para a próxima função
+        next();  
     } catch (error) {
         return res.status(400).json("Token inválido");
     }

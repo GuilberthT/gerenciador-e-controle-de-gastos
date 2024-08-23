@@ -35,7 +35,7 @@ export async function updateIncomeType(req: any, res: any): Promise<void> {
       { new: true }
     );
     if (!updatedIncomeType) {
-      res.status(404).json({ message: "Tipo de renda não encontrada" });
+      res.status(404).json({ message: "Tipo de renda não encontrado" });
       return;
     }
     res.status(200).json(updatedIncomeType);
@@ -45,4 +45,16 @@ export async function updateIncomeType(req: any, res: any): Promise<void> {
 }
 
 export async function deleteIncomeType(req: any, res: any): Promise<void> {
-  const { id
+  const { id } = req.params;
+
+  try {
+    const deletedIncomeType = await incomeTypeModel.findByIdAndDelete(id);
+    if (!deletedIncomeType) {
+      res.status(404).json({ message: "Tipo de renda não encontrado" });
+      return;
+    }
+    res.status(200).json({ message: "Tipo de renda deletado com sucesso" });
+  } catch (error: any) {
+    res.status(400).json({ message: error.message });
+  }
+}
