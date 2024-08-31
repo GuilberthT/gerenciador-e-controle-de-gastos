@@ -11,7 +11,7 @@ interface LoginBody {
 export const loginUser = async (req: Request, res: Response) => {
     try {
         const body: LoginBody = req.body
-
+        
         const user = await User.findOne({ email: body.email });
         const secret = process.env.SECRET;
 

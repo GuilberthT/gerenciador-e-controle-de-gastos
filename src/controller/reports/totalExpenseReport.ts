@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 import { getExpenses } from "../../service/expenseService.js";
 import { formatMonth } from "../../utils/dateFormat.js";
-import { IExpense } from "../../model/expenseModel"; 
+import { IExpense } from "../../model/types/expense-types.js";
 
 export async function reportTotalExpenses(req: Request, res: Response): Promise<void> {
   const month = Number(req.query.month);
 
-  const expenses: IExpense[] = await getExpenses();
-
+  const expenses = await getExpenses();
+  
   const filterExpensesByMonth = filterByMonth(expenses, month);
 
   const totalExpenses = sumExpenseValue(filterExpensesByMonth);

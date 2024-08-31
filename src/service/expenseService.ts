@@ -1,22 +1,16 @@
 import { expenseModel } from "../model/expenseModel";
+import { IExpense } from "../model/types/expense-types";
 
-export interface IExpense {
-  description: string;
-  value: number;
-  expenseType: string;
-  paymentDate: Date;
-  createdAt?: Date;
-}
-
-export async function newExpense(data: IExpense): Promise<IExpense> {
+export async function newExpense(data: Partial<IExpense>): Promise<IExpense> {
   try {
-    const { description, value, expenseType, paymentDate } = data;
+    const { description, value, expenseType, date } = data;
+
     const expense = await expenseModel.create({
       description,
       value,
       expenseType,
       createdAt: new Date(),
-      paymentDate,
+      date,
     });
 
     return expense;
@@ -25,7 +19,7 @@ export async function newExpense(data: IExpense): Promise<IExpense> {
   }
 }
 
-export async function getExpenses(): Promise<IExpense[]> {
+export async function getExpenses() {
   try {
     const expenses = await expenseModel.find().populate("expenseType");
 
@@ -52,21 +46,25 @@ export async function updateExpenseById(id: string, newData: Partial<IExpense>):
 export async function deleteExpenseById(id: string): Promise<IExpense | null> {
   try {
     const deletedExpense = await expenseModel.findByIdAndDelete(id);
+
     if (!deletedExpense) {
       throw new Error("Despesa não encontrada.");
     }
+
     return deletedExpense;
   } catch (error: any) {
     throw new Error(error);
   }
 }
 
-export async function getExpenseById(id: string): Promise<IExpense | null> {
+export async function getExpenseById(id: string): Promise<IExpense> {
   try {
     const expense = await expenseModel.findById(id);
+
     if (!expense) {
       throw new Error("Despesa não encontrada.");
     }
+
     return expense;
   } catch (error: any) {
     throw new Error(error);

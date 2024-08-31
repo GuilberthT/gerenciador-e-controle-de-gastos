@@ -1,23 +1,18 @@
 import { Request, Response } from "express";
 import { getExpensesById } from "../../service/expenseTypeService";
 import { newExpense } from "../../service/expenseService";
+import { IExpense } from "../../model/types/expense-types";
 
-interface Expense {
-  description: string;
-  value: number;
-  expenseType: string;
-  paymentDate: Date;
-  createAt?: Date;
-}
-
-export async function createExpense(req: Request, res: Response): Promise<void> {
+export async function createExpense(req: Request<{}, {}, IExpense>, res: Response): Promise<void> {
   try {
     await validates(req.body);
-    const expense: Expense = {
+
+    const expense = {
       ...req.body,
       createAt: new Date(), 
-      paymentDate: new Date(req.body.paymentDate)  
+      date: new Date(req.body.date)
     };
+
     const myExpense = await newExpense(expense);
 
     res.status(200).json(myExpense);
@@ -26,13 +21,12 @@ export async function createExpense(req: Request, res: Response): Promise<void> 
   }
 }
 
-async function validates(body: Expense): Promise<void> {
+async function validates(body: IExpense): Promise<void> {
   validateRequiredDescription(body.description);
   validateRequiredValue(body.value);
   await validateRequiredExpenseType(body.expenseType);
-  validateRequiredPaymentDate(body.paymentDate);
+  validateRequiredPaymentDate(body.date);
 }
-
 function validateRequiredDescription(description: string): void {
   if (!description) {
     throw new Error("A descrição é obrigatória!");
@@ -45,7 +39,7 @@ function validateRequiredValue(value: number): void {
   }
 }
 
-async function validateRequiredExpenseType(idExpenseType: string): Promise<void> {
+async function validateRequiredExpenseType(idExpenseType: IExpense['expenseType']): Promise<void> {
   if (!idExpenseType) {
     throw new Error("O tipo de despesa é obrigatório!");
   }
@@ -57,7 +51,7 @@ async function validateRequiredExpenseType(idExpenseType: string): Promise<void>
   }
 }
 
-function validateRequiredPaymentDate(paymentDate: Date): void {
+function validateRequiredPaymentDate(paymentDate: string | Date): void {
   if (!paymentDate) {
     throw new Error("A data de pagamento é obrigatória!");
   }

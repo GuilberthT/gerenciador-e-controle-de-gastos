@@ -1,4 +1,5 @@
 import { expenseTypeModel } from "../model/expenseTypeModel";
+import { IExpense } from "../model/types/expense-types";
 
 export interface IExpenseType {
   description: string;
@@ -59,7 +60,7 @@ export async function deleteExpenseType(req: any, res: any): Promise<void> {
   }
 }
 
-export async function getExpensesById(id: string): Promise<IExpenseType | null> {
+export async function getExpensesById(id: IExpense['expenseType']): Promise<IExpenseType | null> {
   try {
     const expensesType = await expenseTypeModel.findById(id);
 

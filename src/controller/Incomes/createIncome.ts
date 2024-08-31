@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { newIncome } from "../../service/incomeService";
-import { IIncome } from "../../model/types/incomeTypes";
+import { IIncome } from "../../model/incomeTypes";
 
 export async function createIncome(req: Request<{}, {}, IIncome>, res: Response): Promise<void> {
     const income = {

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
-interface DecodedToken {
+interface UserLogged {
     id: string;
     email: string;
 }
@@ -20,9 +20,11 @@ export const auth = (req: Request, res: Response, next: NextFunction): Response 
             return res.status(403).json("Acesso não autorizado");
         }
 
-        const decoded = jwt.verify(token, process.env.SECRET as string) as DecodedToken;
+        const decoded = jwt.verify(token, process.env.SECRET as string) as UserLogged;
 
-        req.user = decoded;  
+        if(!decoded) {
+            return res.status(403).json("Acesso não autorizado")
+        }
 
         next();  
     } catch (error) {

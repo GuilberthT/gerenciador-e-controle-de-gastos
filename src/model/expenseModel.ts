@@ -1,15 +1,7 @@
-import { Schema, model, Document } from 'mongoose';
+import { Schema, model } from 'mongoose';
+import { IExpense } from './types/expense-types';
 
-export interface IExpense extends Document {
-    description: string;
-    value: number;
-    expenseType: Schema.Types.ObjectId;
-    date: string;
-    createAt: Date;
-    updateAt: Date;
-}
-
-const schemaExpense = new Schema < IExpense > ({
+const schemaExpense = new Schema<IExpense>({
     description: { type: String, required: true },
     value: { type: Number, required: true },
     expenseType: {
@@ -22,4 +14,4 @@ const schemaExpense = new Schema < IExpense > ({
     updateAt: { type: Date, default: Date.now }
 });
 
-export const expenseModel = model < IExpense > ('Expense', schemaExpense);
+export const expenseModel = model<IExpense>('Expense', schemaExpense);
