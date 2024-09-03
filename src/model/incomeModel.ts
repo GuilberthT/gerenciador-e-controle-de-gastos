@@ -1,14 +1,5 @@
-import { Schema, model, Document } from "mongoose";
-
-
-interface IIncome extends Document {
-    description: string;
-    value: number;
-    incomeType: Schema.Types.ObjectId;
-    date: string;
-    createdAt: Date;
-    updatedAt: Date;
-}
+import { Schema, model } from "mongoose";
+import { IIncome } from "./types/income-types";
 
 const incomeSchema = new Schema<IIncome>({
     description: { type: String, required: true },

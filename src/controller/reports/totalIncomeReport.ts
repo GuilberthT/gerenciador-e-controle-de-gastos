@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { getIncome } from "../../service/incomeService";
 import { formatMonth } from "../../utils/dateFormat";
-import { IIncome } from "../../model/incomeTypes";
+import { IIncome } from "../../model/types/income-types";
 
 interface IQuery {
   month: number

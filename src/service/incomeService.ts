@@ -1,5 +1,5 @@
 import Income from "../model/incomeModel";
-import { IIncome } from "../model/incomeTypes";
+import { IIncome } from "../model/types/income-types";
 
 export async function newIncome(data: IIncome): Promise<IIncome> {
   try {
