@@ -29,7 +29,7 @@ export async function getExpenses() {
   }
 }
 
-export async function updateExpenseById(id: string, newData: IExpense): Promise<IExpense | null> {
+export async function updateExpenseById(id: string, newData: any): Promise<IExpense | null> {
   try {
     const updatedExpense = await expenseModel.findByIdAndUpdate(id, newData, {
       new: true,
