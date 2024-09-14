@@ -10,6 +10,7 @@ export async function updateExpenses(req: Request, res: Response) {
     }
 
     const updatedExpenseData = {
+        ...req.body,
         description,
         value,
         createAt: new Date(),
