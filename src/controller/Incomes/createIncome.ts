@@ -11,7 +11,7 @@ export async function createIncome(req: Request<{}, {}, IIncome>, res: Response)
       date: new Date(req.body.date).toISOString(),  
     };
 
-    const responseIncome = await newIncome(incomeData as IIncome);  
+    const responseIncome = await newIncome(incomeData);  
     res.status(201).json(responseIncome);
   } catch (error: any) {
     res.status(400).json({ message: error.message });

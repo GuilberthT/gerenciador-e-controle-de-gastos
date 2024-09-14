@@ -6,7 +6,7 @@ import { IExpense } from "../../model/types/expense-types";
 export async function createExpense(req: Request<{}, {}, IExpense>, res: Response): Promise<void> {
   try {
     await validates(req.body);
-
+ 
     const expense = {
       ...req.body,
       createAt: new Date(), 

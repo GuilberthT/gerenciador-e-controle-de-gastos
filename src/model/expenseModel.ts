@@ -1,7 +1,9 @@
 import { Schema, model } from 'mongoose';
 import { IExpense } from './types/expense-types';
 
-const schemaExpense = new Schema<IExpense>({
+export interface IExpenseDocument extends IExpense, Document {}
+
+const schemaExpense = new Schema<IExpenseDocument>({
     description: { type: String, required: true },
     value: { type: Number, required: true },
     expenseType: {
@@ -14,4 +16,4 @@ const schemaExpense = new Schema<IExpense>({
     updateAt: { type: Date, default: Date.now }
 });
 
-export const expenseModel = model<IExpense>('Expense', schemaExpense);
+export const expenseModel = model<IExpenseDocument>('Expense', schemaExpense);

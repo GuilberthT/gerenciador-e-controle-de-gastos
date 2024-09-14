@@ -1,7 +1,7 @@
 import { expenseModel } from "../model/expenseModel";
 import { IExpense } from "../model/types/expense-types";
 
-export async function newExpense(data: Partial<IExpense>): Promise<IExpense> {
+export async function newExpense(data: IExpense): Promise<IExpense> {
   try {
     const { description, value, expenseType, date } = data;
 
@@ -29,7 +29,7 @@ export async function getExpenses() {
   }
 }
 
-export async function updateExpenseById(id: string, newData: Partial<IExpense>): Promise<IExpense | null> {
+export async function updateExpenseById(id: string, newData: IExpense): Promise<IExpense | null> {
   try {
     const updatedExpense = await expenseModel.findByIdAndUpdate(id, newData, {
       new: true,
