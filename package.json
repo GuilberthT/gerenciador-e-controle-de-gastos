@@ -2,7 +2,6 @@
   "name": "gerenciador-e-controle-de-gastos",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/index.js",
