@@ -5,6 +5,7 @@ import { updateExpenses } from '../controller/expenses/updateExpenses';
 import { deleteExpenses } from '../controller/expenses/deleteExpenses';
 import { getExpenseById } from '../controller/expenses/getExpenseById';
 import { auth } from '../middleware/auth';
+import { getTotalExpense } from '../controller/expenses/getTotalExpenses';
 
 const expensesRouter = Router();
 
@@ -13,6 +14,7 @@ expensesRouter.post('/', auth, createExpense);
 expensesRouter.put('/:id', updateExpenses);
 expensesRouter.delete('/:id', deleteExpenses);
 expensesRouter.get('/:id', getExpenseById);
+expensesRouter.get('/total/:mouth', getTotalExpense)
 
 export default expensesRouter;
 

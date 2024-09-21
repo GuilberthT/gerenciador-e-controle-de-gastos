@@ -85,3 +85,27 @@ export async function getExpensesByMonth(month: number, year: number): Promise<I
     throw new Error(error);
   }
 }
+
+export async function getTotalExpenses(month: number): Promise<number> {
+  const startDate = new Date(new Date().getFullYear(), month - 1, 1);
+  const endDate = new Date(new Date().getFullYear(), month, 0);
+
+  const totalExpenses = await expenseModel.aggregate([
+    {
+      $match: {
+        createdAt: {
+          $gte: startDate,
+          $lt: endDate,
+        },
+      },
+    },
+    {
+      $group: {
+        _id: null,
+        total: { $sum: "$value" },
+      },
+    },
+  ]);
+
+  return totalExpenses.length > 0 ? totalExpenses[0].total : 0;
+}
