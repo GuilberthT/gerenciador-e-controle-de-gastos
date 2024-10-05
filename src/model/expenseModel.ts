@@ -12,8 +12,8 @@ const schemaExpense = new Schema<IExpenseDocument>({
         required: true
     },
     date: { type: String, required: true },
-    createAt: { type: Date, default: Date.now },
-    updateAt: { type: Date, default: Date.now }
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now }
 });
 
 export const expenseModel = model<IExpenseDocument>('Expense', schemaExpense);

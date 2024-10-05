@@ -5,6 +5,6 @@ export interface IExpense {
     value: number;
     expenseType: Schema.Types.ObjectId;
     date: string | Date;
-    createAt: Date;
-    updateAt: Date;
+    createdAt: Date;
+    updatedAt: Date;
 }

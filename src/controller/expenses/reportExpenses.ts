@@ -6,6 +6,7 @@ export async function generateExpenseReport(req: Request, res: Response): Promis
 
     try {
         const expenses = await getExpensesByMonth(month, year);
+        
         res.status(200).json(expenses);
     } catch (error) {
         res.status(400).json({ message: (error as Error).message });

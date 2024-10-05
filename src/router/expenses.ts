@@ -1,11 +1,11 @@
 import { Router } from 'express';
+import { auth } from '../middleware/auth';
 import { createExpense } from '../controller/expenses/createExpense';
 import { findExpenses } from '../controller/expenses/findExpenses';
 import { updateExpenses } from '../controller/expenses/updateExpenses';
 import { deleteExpenses } from '../controller/expenses/deleteExpenses';
 import { getExpenseById } from '../controller/expenses/getExpenseById';
-import { auth } from '../middleware/auth';
-import { getTotalExpense } from '../controller/expenses/getTotalExpenses';
+import { getTotalExpense } from '../controller/expenses/getExpenseTotal';
 
 const expensesRouter = Router();
 
@@ -14,7 +14,7 @@ expensesRouter.post('/', auth, createExpense);
 expensesRouter.put('/:id', updateExpenses);
 expensesRouter.delete('/:id', deleteExpenses);
 expensesRouter.get('/:id', getExpenseById);
-expensesRouter.get('/total/:mouth', getTotalExpense)
+expensesRouter.get('/total/:month', getTotalExpense);
 
 export default expensesRouter;
 
