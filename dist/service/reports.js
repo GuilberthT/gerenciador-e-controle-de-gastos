@@ -1,4 +1,3 @@
-"use strict";
 // import { incomeTypeModel } from "../model/incomeTypeModel"
 // export async function getTotalIncomes(id) {
 //     try {
@@ -8,3 +7,4 @@
 //         throw new Error(error)
 //     }
 // }
+//# sourceMappingURL=reports.js.map

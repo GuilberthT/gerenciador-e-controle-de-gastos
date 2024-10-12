@@ -11,3 +11,4 @@ expense_Type_Router.get('/', findExpenseType_1.find_expense_types_controller);
 expense_Type_Router.put('/:id', updateExpenseType_1.update_expense_type_controller);
 expense_Type_Router.delete('/:id', deleteExpenseType_1.delete_expense_type_controller);
 exports.default = expense_Type_Router;
+//# sourceMappingURL=expenseTypeRoutes.js.map

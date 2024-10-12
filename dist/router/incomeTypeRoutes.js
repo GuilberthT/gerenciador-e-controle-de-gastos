@@ -11,3 +11,4 @@ income_type_router.get('/', findIncomeTypes_1.find_income_types_controller);
 income_type_router.put('/:id', updateIncomeType_1.update_income_type_controller);
 income_type_router.delete('/:id', deleteIncomeType_1.delete_income_type_controller);
 exports.default = income_type_router;
+//# sourceMappingURL=incomeTypeRoutes.js.map

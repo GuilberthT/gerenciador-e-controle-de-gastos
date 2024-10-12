@@ -7,3 +7,4 @@ const reportsRouter = (0, express_1.Router)();
 reportsRouter.get("/totalExpenses", totalExpenseReport_1.reportTotalExpenses);
 reportsRouter.get("/totalIncomes", totalIncomeReport_1.reportTotalIncomes);
 exports.default = reportsRouter;
+//# sourceMappingURL=reports.js.map

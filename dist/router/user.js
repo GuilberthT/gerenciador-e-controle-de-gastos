@@ -9,3 +9,4 @@ userRouter.post("/register", registerUser_1.registerUser);
 userRouter.post("/login", loginUser_1.loginUser);
 userRouter.get("/:id", getUser_1.getUser);
 exports.default = userRouter;
+//# sourceMappingURL=user.js.map

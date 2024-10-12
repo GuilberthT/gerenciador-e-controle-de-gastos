@@ -11,7 +11,8 @@ const schemaExpense = new mongoose_1.Schema({
         required: true
     },
     date: { type: String, required: true },
-    createAt: { type: Date, default: Date.now },
-    updateAt: { type: Date, default: Date.now }
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now }
 });
 exports.expenseModel = (0, mongoose_1.model)('Expense', schemaExpense);
+//# sourceMappingURL=expenseModel.js.map

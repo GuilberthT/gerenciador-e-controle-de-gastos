@@ -8,3 +8,4 @@ const schemaExpenseType = new mongoose_1.Schema({
     updatedAt: { type: Date, default: Date.now }
 });
 exports.expenseTypeModel = (0, mongoose_1.model)("ExpenseType", schemaExpenseType);
+//# sourceMappingURL=expenseTypeModel.js.map

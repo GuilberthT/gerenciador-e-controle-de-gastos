@@ -10,3 +10,4 @@ dayjs_1.default.extend(customParseFormat_1.default);
 function formatMonth(date) {
     return (0, dayjs_1.default)(date, "DD/MM/YYYY").month() + 1;
 }
+//# sourceMappingURL=dateFormat.js.map

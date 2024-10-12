@@ -8,3 +8,4 @@ const incomeTypeSchema = new mongoose_1.Schema({
     updatedAt: { type: Date, default: Date.now }
 });
 exports.incomeTypeModel = (0, mongoose_1.model)("IncomeType", incomeTypeSchema);
+//# sourceMappingURL=incomeTypeModel.js.map

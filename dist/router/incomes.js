@@ -17,3 +17,4 @@ incomesRouter.get("/:id", getIncomeById_1.getIncomeById);
 incomesRouter.get("/total/:month", getTotalIncome_1.getTotalIncome);
 incomesRouter.get("/report/month", reportIncome_1.generateIncomeReport);
 exports.default = incomesRouter;
+//# sourceMappingURL=incomes.js.map

@@ -21,3 +21,4 @@ function setRouter(app) {
     app.use('/reports', reports_1.default);
 }
 exports.default = router;
+//# sourceMappingURL=index.js.map

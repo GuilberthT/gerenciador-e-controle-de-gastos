@@ -1,21 +1,35 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.create_income_type_controller = create_income_type_controller;
 const incomeTypeService_1 = require("../../service/incomeTypeService");
-async function create_income_type_controller(req, res) {
-    try {
-        await validates(req.body);
-        await (0, incomeTypeService_1.newCreateIncomeType)(req, res);
-    }
-    catch (error) {
-        res.status(500).json({ message: "Erro interno do servidor" });
-    }
+function create_income_type_controller(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            yield validates(req.body);
+            yield (0, incomeTypeService_1.newCreateIncomeType)(req, res);
+        }
+        catch (error) {
+            res.status(500).json({ message: "Erro interno do servidor" });
+        }
+    });
 }
-async function validates(body) {
-    validateRequiredDescription(body.description);
+function validates(body) {
+    return __awaiter(this, void 0, void 0, function* () {
+        validateRequiredDescription(body.description);
+    });
 }
 function validateRequiredDescription(description) {
     if (!description) {
         throw new Error("A descrição é obrigatória!");
     }
 }
+//# sourceMappingURL=createIncomeType.js.map
