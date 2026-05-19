@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node src/index.js)",
+      "PowerShell($connections = Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue; if \\($connections\\) { $connections | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }; Write-Host \"Processos encerrados\" } else { Write-Host \"Porta 3000 livre\" })",
+      "PowerShell($connections = Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue; if \\($connections\\) { $connections | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue } }; Write-Host \"Feito\")",
+      "Bash(npm create *)",
+      "Bash(npm install *)"
+    ]
+  }
+}
